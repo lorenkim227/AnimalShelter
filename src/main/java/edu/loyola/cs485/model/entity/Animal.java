@@ -16,7 +16,7 @@ import java.sql.Date;
 	constraint animal_adoption_fk foreign key(id_adoption) references adoption(id_adoption)
 
 * */
-public class Animal {
+public class Animal extends AbstractEntity {
     private Integer id_animal = null;
     private Integer id_adoption = null;
     private String name_animal;

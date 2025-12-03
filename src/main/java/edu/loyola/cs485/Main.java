@@ -11,15 +11,15 @@ public class Main {
     static String ConUrl = "jdbc:mysql://localhost";
     static String Port = "3306";
     static String Database = "animal_db";
-    static String Username = "root";
-    static String Password = "root";
+    static String Username = "groupThree";
+    static String Password = "Animal123";
 
     static String url = ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password;
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
         try {
-            String url = "jdbc:mysql://localhost:3306/animal_db?user=root&password=root";
+            String url = "jdbc:mysql://localhost:3306/animal_db?user=groupThree&password=Animal123";
             Connection con = DriverManager.getConnection(url);
             System.out.println("Connected to the database");
 
@@ -29,22 +29,6 @@ public class Main {
         }
     }
 
-    public static void secureInsertPerson() throws SQLException{
-        Connection con = DriverManager.getConnection(url);
-
-        // all of our entities use FK person, so we need to add one person item
-        String sql = "INSERT INTO person(name, email, phone, bank_info) VALUES (?,?,?,?);";
-
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, "Jane Doe");
-        pst.setString(2,"janedoe@shelter.com");
-        pst.setString(3,"123456789");
-        pst.setString(4,"000000000"); // represents a routing num
-        pst.executeUpdate();
-
-        con.close();
-    }
-
     public static void secureInsertAnimal() throws SQLException{
         Connection con = DriverManager.getConnection(url);
 
@@ -52,10 +36,12 @@ public class Main {
         String sql = "INSERT INTO animal(name_animal, dob_animal, breed_animal, color, species) VALUES (?,?,?,?,?);";
 
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, "1");
-        pst.setString(2,"12/02/2025");
-        pst.setString(3,"100");
-        pst.setString(4,"1"); // represents a routing num
+        // my personal dog :)
+        pst.setString(1, "Peyote");
+        pst.setString(2,"03/21/2019");
+        pst.setString(3,"German Shepherd");
+        pst.setString(4,"Bi-color");
+        pst.setString(5,"Canine");
         pst.executeUpdate();
 
         con.close();

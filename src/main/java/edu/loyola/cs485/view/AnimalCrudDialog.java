@@ -79,7 +79,7 @@ public class AnimalCrudDialog extends JDialog {
             AnimalService service = new AnimalService();
             Animal c = (Animal) lstAnimalUI.getSelectedValue();
             if (c != null) {
-                service.deleteAnimal(c.getID());
+                service.deleteAnimal(c.getId());
                 lstAnimalUI.clearSelection();
 
                 // Repopulate the JList to get new data
