@@ -25,33 +25,66 @@ public class Animal {
     private String species;
     private Date dob_animal;
 
-    public Integer getID() {
+    public Integer getId() {
         return id_animal;
     }
 
-    public void setID(Integer ID) {
-        this.id_animal = ID;
+    public void setId(Integer id_animal) {
+        this.id_animal = id_animal;
+    }
+
+    public Integer getId_adoption() {
+        return id_adoption;
+    }
+
+    public void setId_adoption(Integer id_adoption) {
+        this.id_adoption = id_adoption;
     }
 
     public String getName() {
         return name_animal;
     }
 
-    public void setName(String name) {
-        this.name_animal = name;
+    public void setName(String name_animal) {
+        this.name_animal = name_animal;
     }
 
+    public String getBreed() {
+        return breed_animal;
+    }
 
-    public Date getDob() {
+    public void setBreed(String breed_animal) {
+        this.breed_animal = breed_animal;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public Date getDob_animal() {
         return dob_animal;
     }
 
-    public void setDob(Date dob) {
-        this.dob_animal = dob;
+    public void setDob_animal(Date dob_animal) {
+        this.dob_animal = dob_animal;
     }
+
+
 
     @Override
     public String toString(){
-        return getID().toString()+": "+getName()+" <"+getEmail()+">";
+        return getId().toString()+": "+getName()+" "+getBreed()+" "+getColor()+" "+getSpecies()+" "+getDob_animal();
     }
 }

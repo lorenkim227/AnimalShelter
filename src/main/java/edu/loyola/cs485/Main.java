@@ -1,8 +1,8 @@
 package edu.loyola.cs485;
 
-//import edu.loyola.cs485.model.dao.ClientDAO;
-//import edu.loyola.cs485.model.entity.Client;
-//import edu.loyola.cs485.view.MainFrame;
+import edu.loyola.cs485.model.dao.ClientDAO;
+import edu.loyola.cs485.model.entity.AminalDAO;
+import edu.loyola.cs485.view.MainFrame;
 
 import java.sql.*;
 import java.util.List;
