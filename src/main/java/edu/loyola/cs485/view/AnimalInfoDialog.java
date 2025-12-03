@@ -53,13 +53,6 @@ public class AnimalInfoDialog extends JDialog {
     private void onOK() {
         // add your code here
         AnimalService service = new AnimalService();
-        /*private Integer id_animal = null;
-        private Integer id_adoption = null;
-        private String name_animal;
-        private String breed_animal;
-        private String color;
-        private String species;
-        private Date dob_animal;*/
         String id = txtId.getText();
         String name = txtName.getText();
         String breed = txtBreed.getText();

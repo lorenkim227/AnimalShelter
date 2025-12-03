@@ -73,11 +73,11 @@ public class Animal {
         this.species = species;
     }
 
-    public Date getDob_animal() {
+    public Date getDob() {
         return dob_animal;
     }
 
-    public void setDob_animal(Date dob_animal) {
+    public void setDob(Date dob_animal) {
         this.dob_animal = dob_animal;
     }
 
@@ -85,6 +85,6 @@ public class Animal {
 
     @Override
     public String toString(){
-        return getId().toString()+": "+getName()+" "+getBreed()+" "+getColor()+" "+getSpecies()+" "+getDob_animal();
+        return getId().toString()+": "+getName()+" "+getBreed()+" "+getColor()+" "+getSpecies()+" "+getDob();
     }
 }
