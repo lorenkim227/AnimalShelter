@@ -16,8 +16,19 @@ public class Main {
 
     static String url = ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password;
 
+    public static void testConnection() {
+        try (Connection con = DriverManager.getConnection(url)) {
+            if (con != null) {
+                System.out.println("Connection successful!");
+            }
+        } catch (SQLException e) {
+            System.out.println("Connection failed: " + e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        testConnection();
         MainFrame frame = new MainFrame(); // Instantiates the Window
         frame.setVisible(true); // Activates it (and turn it visible)
         /*
