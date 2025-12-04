@@ -23,10 +23,12 @@ public class Main {
             Connection con = DriverManager.getConnection(url);
             System.out.println("Connected to the database");
 
+            //secureInsertAnimal();
             con.close();
         } catch(SQLException ex) {
             System.out.println(ex.getMessage());
         }
+
     }
 
     public static void secureInsertAnimal() throws SQLException{
@@ -45,6 +47,9 @@ public class Main {
         pst.executeUpdate();
 
         con.close();
+
     }
+
+    //secureInsertAnimal();
 }
 

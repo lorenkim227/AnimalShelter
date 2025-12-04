@@ -29,18 +29,36 @@ public class AnimalService {
        //return null;
     }
 
-    public Animal updateAnimal() throws Exception {
-        return null;
-    }
+    public Animal updateAnimal(int id, String name, String breed, String color, String species, String dob) throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        java.sql.Date newDob = new java.sql.Date(sdf.parse(dob).getTime());
 
+        // Create Animal object with updated information
+        Animal animal = new Animal();
+        animal.setId(id);
+        animal.setName(name);
+        animal.setBreed(breed);
+        animal.setDob(newDob);
+        animal.setColor(color);
+        animal.setSpecies(species);
+
+        // Call DAO to update the record in the database
+        AnimalDAO dao = new AnimalDAO();
+        dao.update(animal);
+
+        return animal;
+    }
+/*
     public Animal deleteAnimal() throws Exception {
         return null;
     }
-
+*/
     public List<Animal> getAllAnimals() throws Exception {
         return null;
     }
 
     public void deleteAnimal(int id) throws Exception {
+    AnimalDAO dao = new AnimalDAO();
+    dao.delete(id);
     }
 }
