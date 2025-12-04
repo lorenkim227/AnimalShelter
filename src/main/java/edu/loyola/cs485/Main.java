@@ -18,6 +18,9 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        MainFrame frame = new MainFrame(); // Instantiates the Window
+        frame.setVisible(true); // Activates it (and turn it visible)
+        /*
         try {
             String url = "jdbc:mysql://localhost:3306/animal_db?user=groupThree&password=Animal123";
             Connection con = DriverManager.getConnection(url);
@@ -29,8 +32,10 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-    }
+         */
 
+    }
+/*
     public static void secureInsertAnimal() throws SQLException{
         Connection con = DriverManager.getConnection(url);
 
@@ -51,5 +56,7 @@ public class Main {
     }
 
     //secureInsertAnimal();
+
+ */
 }
 
