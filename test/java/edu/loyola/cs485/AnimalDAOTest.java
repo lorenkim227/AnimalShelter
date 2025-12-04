@@ -6,11 +6,23 @@ import edu.loyola.cs485.model.entity.Animal;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Date;
+import java.sql.*;
 import java.util.List;
 
 
 public class AnimalDAOTest {
+
+    @BeforeEach
+    public void resetDatabase() throws Exception {
+        AnimalDAO dao = new AnimalDAO();
+        dao.setTestDatabase();
+
+        // Clear table
+        Connection con = dao.getConnection();
+        con.prepareStatement("DELETE FROM Animal").executeUpdate();
+        con.close();
+    }
+
 
     @Test
     public void testFake() {
@@ -26,7 +38,7 @@ public class AnimalDAOTest {
 
         Animal animal = new Animal();
         animal.setName("Peyote");
-        animal.setDob(Date.valueOf("2019-21-03"));
+        animal.setDob(Date.valueOf("2019-03-21"));
         animal.setBreed("German Shepherd");
         animal.setColor("Bi-color");
         animal.setSpecies("Canine");
@@ -47,6 +59,7 @@ public class AnimalDAOTest {
         dao.setTestDatabase();
 
         // Insert test entity
+        // My cat :)
         Animal animal = new Animal();
         animal.setName("Ming ming");
         animal.setDob(Date.valueOf("2025-08-01"));
@@ -77,12 +90,12 @@ public class AnimalDAOTest {
         AnimalDAO dao = new AnimalDAO();
         dao.setTestDatabase();
 
-        Animal found = dao.read(9999);   // non-existent ID
+        Animal found = dao.read(9999);
 
-        // Your DAO returns a new empty Animal, not null
+        // default animal is null...because it doesn't exist
         assertAll(
-                () -> assertEquals(0, found.getId()),    // default int = 0
-                () -> assertNull(found.getName())        // default null
+                () -> assertNull(found.getId()),
+                () -> assertNull(found.getName())
         );
     }
 

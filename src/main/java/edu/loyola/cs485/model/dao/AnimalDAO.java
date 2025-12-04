@@ -30,7 +30,7 @@ public class AnimalDAO extends AbstractDAO<Animal> {
 
     @Override
     public Animal read(int ID) throws SQLException {
-        Animal animal = new Animal();
+
         Connection con = getConnection();
 
         String sql = "SELECT * FROM Animal WHERE id_animal = ?";
@@ -38,11 +38,13 @@ public class AnimalDAO extends AbstractDAO<Animal> {
         pst.setInt(1, ID);
         ResultSet rs = pst.executeQuery();
 
+        Animal animal = new Animal();
+
         if (rs.next()) {
             animal.setId(rs.getInt("id_animal"));
             animal.setName(rs.getString("name_animal"));
             animal.setDob(rs.getDate("dob_animal"));
-            animal.setBreed(rs.getString("breed"));
+            animal.setBreed(rs.getString("breed_animal"));
             animal.setColor(rs.getString("color"));
             animal.setSpecies(rs.getString("species"));
 
@@ -100,7 +102,7 @@ public class AnimalDAO extends AbstractDAO<Animal> {
             a.setId(rs.getInt("id_animal"));
             a.setName(rs.getString("name_animal"));
             a.setDob(rs.getDate("dob_animal"));
-            a.setBreed(rs.getString("breed"));
+            a.setBreed(rs.getString("breed_animal"));
             a.setColor(rs.getString("color"));
             a.setSpecies(rs.getString("species"));
 
