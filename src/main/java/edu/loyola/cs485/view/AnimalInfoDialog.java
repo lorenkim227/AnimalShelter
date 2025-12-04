@@ -3,7 +3,6 @@ import edu.loyola.cs485.controller.AnimalService;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.Date;
 
 public class AnimalInfoDialog extends JDialog {
 
