@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalDAO extends AbstractDAO<Animal> {
+
+    /*
+     * create an animal entity with all the right attributes
+     * @param entity entity to be created
+     */
     @Override
     public void create(Animal entity) throws SQLException {
         Connection con = getConnection(); // Always open a connection
@@ -27,7 +32,11 @@ public class AnimalDAO extends AbstractDAO<Animal> {
         con.close(); // Dont forget to close it
     }
 
-
+    /*
+     * get a specific existing animal
+     * @param ID id of queried animal
+     * @return animal that was selected
+     */
     @Override
     public Animal read(int ID) throws SQLException {
 
@@ -54,6 +63,10 @@ public class AnimalDAO extends AbstractDAO<Animal> {
         return animal;
     }
 
+    /*
+     * update a specific existing animal
+     * @param entity animal entity to be updated
+     */
     @Override
     public void update(Animal entity) throws SQLException {
         Connection con = getConnection();
@@ -75,6 +88,10 @@ public class AnimalDAO extends AbstractDAO<Animal> {
 
     }
 
+    /*
+     * delete a specific existing animal
+     * @param ID id of animal entity to be deleted
+     */
     @Override
     public void delete(int ID) throws SQLException {
         Connection con = getConnection();
@@ -87,6 +104,10 @@ public class AnimalDAO extends AbstractDAO<Animal> {
         con.close();
     }
 
+    /*
+     * return a list of all existing animal entities in database
+     * @return list of all animals
+     */
     @Override
     public List<Animal> list() throws SQLException {
         ArrayList<Animal> animals = new ArrayList<>();

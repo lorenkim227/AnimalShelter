@@ -20,43 +20,8 @@ public class Main {
         System.out.println("Hello World!");
         MainFrame frame = new MainFrame(); // Instantiates the Window
         frame.setVisible(true); // Activates it (and turn it visible)
-        /*
-        try {
-            String url = "jdbc:mysql://localhost:3306/animal_db?user=groupThree&password=Animal123";
-            Connection con = DriverManager.getConnection(url);
-            System.out.println("Connected to the database");
-
-            //secureInsertAnimal();
-            con.close();
-        } catch(SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-         */
-
-    }
-/*
-    public static void secureInsertAnimal() throws SQLException{
-        Connection con = DriverManager.getConnection(url);
-
-        // all of our entities use FK person, so we need to add one person item
-        String sql = "INSERT INTO animal(name_animal, dob_animal, breed_animal, color, species) VALUES (?,?,?,?,?);";
-
-        PreparedStatement pst = con.prepareStatement(sql);
-        // my personal dog :)
-        pst.setString(1, "Peyote");
-        pst.setString(2,"03/21/2019");
-        pst.setString(3,"German Shepherd");
-        pst.setString(4,"Bi-color");
-        pst.setString(5,"Canine");
-        pst.executeUpdate();
-
-        con.close();
 
     }
 
-    //secureInsertAnimal();
-
- */
 }
 

@@ -1,3 +1,9 @@
+/*
+* IMPORTANT NOTE FROM CHLOE: the UI would not work like it did in the class examples
+* unless the java wrote directly to  these dialog files. That was the only way to debug this issue
+* When I was coding. If there is a different and better way to do it then maybe I just missed it.
+* */
+
 package edu.loyola.cs485.view;
 import edu.loyola.cs485.controller.AnimalService;
 import edu.loyola.cs485.model.entity.Animal;
@@ -9,7 +15,6 @@ import java.util.List;
 
 public class AnimalCrudDialog extends JDialog {
 
-
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -17,6 +22,9 @@ public class AnimalCrudDialog extends JDialog {
     private JButton updateButton;
     private JList lstAnimalUI;
 
+    /*
+     * default constructor for AnimalCrudDialog
+     */
     public AnimalCrudDialog() {
         $$$setupUI$$$();
         setContentPane(contentPane);
@@ -66,7 +74,7 @@ public class AnimalCrudDialog extends JDialog {
     }
 
     private void newClick() {
-        // add your code here
+
         AnimalInfoDialog dialog = new AnimalInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
@@ -75,10 +83,13 @@ public class AnimalCrudDialog extends JDialog {
     }
 
     private void onCancel() {
-        // add your code here if necessary
+
         dispose();
     }
 
+    /*
+     * refreshing for delete
+     */
     private void deleteClick() {
         try {
             AnimalService service = new AnimalService();
@@ -96,6 +107,9 @@ public class AnimalCrudDialog extends JDialog {
         }
     }
 
+    /*
+     * get all latest data from database
+     */
     public void populateUI() {
         try {
             AnimalService service = new AnimalService();
@@ -109,6 +123,9 @@ public class AnimalCrudDialog extends JDialog {
 
     }
 
+    /*
+     * refresh interface with latest data from database after user updates animal
+     */
     public void updateClick() {
         try {
 

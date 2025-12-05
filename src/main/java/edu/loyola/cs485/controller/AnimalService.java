@@ -5,12 +5,17 @@ import edu.loyola.cs485.model.dao.AnimalDAO;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
-/**
- * For an MVC architecture, we need another class to separate the Interface (View) from the DAOs (Model)
- * Even if it seems redudant to you, it is a good practice (make a habit of it).
- */
+
 public class AnimalService {
 
+    /* Create an animal via AnimalDAO
+     * @param name
+     * @param breed
+     * @param color
+     * @param species
+     * @param dob
+     * @return a new animal object to put as a new row in animal table
+     */
     public Animal createAnimal(String name, String breed, String color, String species, String dob) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date tempDob = new java.sql.Date(sdf.parse(dob).getTime());
@@ -29,6 +34,15 @@ public class AnimalService {
        //return null;
     }
 
+
+    /* Update an existing animal via AnimalDAO
+     * @param name
+     * @param breed
+     * @param color
+     * @param species
+     * @param dob
+     * @return a new animal object to replace existing row in animal table
+     */
     public Animal updateAnimal(int id, String name, String breed, String color, String species, String dob) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date newDob = new java.sql.Date(sdf.parse(dob).getTime());
@@ -47,21 +61,22 @@ public class AnimalService {
         animal.setSpecies(species);
 
         // Call DAO to update the record in the database
-        //AnimalDAO dao = new AnimalDAO();
         dao.update(animal);
 
         return animal;
     }
-/*
-    public Animal deleteAnimal() throws Exception {
-        return null;
-    }
-*/
+
+    /*
+     * return all existing animal rows in database
+     */
     public List<Animal> getAllAnimals() throws Exception {
         AnimalDAO dao = new AnimalDAO();
         return dao.list();
     }
 
+    /*
+    * delete an animal via dao
+     */
     public void deleteAnimal(int id) throws Exception {
         AnimalDAO dao = new AnimalDAO();
         dao.delete(id);

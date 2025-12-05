@@ -1,3 +1,8 @@
+/*
+ * IMPORTANT NOTE FROM CHLOE: the UI would not work like it did in the class examples
+ * unless the java wrote directly to  these dialog files. That was the only way to debug this issue
+ * When I was coding. If there is a different and better way to do it then maybe I just missed it.
+ * */
 package edu.loyola.cs485.view;
 import edu.loyola.cs485.controller.AnimalService;
 import edu.loyola.cs485.model.entity.Animal;
@@ -24,7 +29,9 @@ public class AnimalInfoDialog extends JDialog {
     private boolean editMode = false;
     private int editId = -1;
 
-    //default constructor
+    /*
+     * default constructor for AnimalInfoDialog
+     */
     public AnimalInfoDialog() {
         setContentPane(contentPane);
         setModal(true);
@@ -58,7 +65,11 @@ public class AnimalInfoDialog extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    //editing constructor
+    /*
+     * constructor for update mode in AnimalInfoDialog
+     * that autofills old info of animal to be updated
+     * @param Animal a: animal to be updated
+     */
     public AnimalInfoDialog(Animal a) {
         this();     // call default constructor
         editMode = true;
@@ -75,12 +86,13 @@ public class AnimalInfoDialog extends JDialog {
         editId = a.getId();
     }
 
-
+    /*
+     * editor window for update and create
+     */
     private void onOK() {
-        // add your code here
+
         AnimalService service = new AnimalService();
 
-        //String id = txtId.getText();
         String name = txtName.getText();
         String breed = txtBreed.getText();
         String dob = txtDob.getText();
@@ -93,13 +105,13 @@ public class AnimalInfoDialog extends JDialog {
             } else {
                 service.createAnimal(name, breed, color, species, dob);
             }
-            service.createAnimal(name, breed, species, color, dob);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void onCancel() {
         dispose(); // dispose method from the superclass JDialog, closes the current dialog
@@ -162,7 +174,7 @@ public class AnimalInfoDialog extends JDialog {
         label5.setText("Color");
         panel3.add(label5, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label6 = new JLabel();
-        label6.setText("DOB");
+        label6.setText("DOB (yyyy-MM-dd)");
         panel3.add(label6, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         txtId = new JTextField();
         txtId.setEditable(false);
@@ -186,5 +198,6 @@ public class AnimalInfoDialog extends JDialog {
     public JComponent $$$getRootComponent$$$() {
         return contentPane;
     }
+
 }
 
