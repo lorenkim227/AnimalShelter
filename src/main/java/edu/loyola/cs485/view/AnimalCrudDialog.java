@@ -67,6 +67,8 @@ public class AnimalCrudDialog extends JDialog {
         AnimalInfoDialog dialog = new AnimalInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
+
+        populateUI();
     }
 
     private void onCancel() {
@@ -107,7 +109,15 @@ public class AnimalCrudDialog extends JDialog {
     public void updateClick() {
         try{
             AnimalService service = new AnimalService();
-            // Left as an exercise for you to practice
+            Animal c = (Animal) lstAnimalUI.getSelectedValue();
+            if (c != null) {
+                AnimalInfoDialog dialog = new AnimalInfoDialog();
+                dialog.pack();
+                dialog.setVisible(true);
+
+                service.updateAnimal(c.getId(), c.getName(), c.getBreed(), c.getSpecies(), c.getColor(), c.getDob().toString());
+                populateUI();
+            }
 
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());

@@ -2,6 +2,8 @@ package edu.loyola.cs485.controller;
 
 import edu.loyola.cs485.model.entity.Animal;
 import edu.loyola.cs485.model.dao.AnimalDAO;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
@@ -54,11 +56,12 @@ public class AnimalService {
     }
 */
     public List<Animal> getAllAnimals() throws Exception {
-        return null;
+        AnimalDAO dao = new AnimalDAO();
+        return dao.list();
     }
 
     public void deleteAnimal(int id) throws Exception {
-    AnimalDAO dao = new AnimalDAO();
-    dao.delete(id);
+        AnimalDAO dao = new AnimalDAO();
+        dao.delete(id);
     }
 }
