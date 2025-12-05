@@ -18,8 +18,9 @@ public class AnimalUpdateDialog extends JDialog {
     private JTextField txtColor;
     private JTextField txtSpecies;
 
-    public AnimalUpdateDialog() {
-        this.id = id;
+    public AnimalUpdateDialog(Integer id) {
+        this.id=id;
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonCancel);
@@ -74,10 +75,10 @@ public class AnimalUpdateDialog extends JDialog {
         dispose(); // dispose method from the superclass JDialog, closes the current dialog
     }
 
-    public static void main(String[] args) {
-        AnimalUpdateDialog dialog = new AnimalUpdateDialog();
+    /*public static void main(String[] args) {
+        AnimalUpdateDialog dialog = new AnimalUpdateDialog(c.getId());
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
-    }
+    }*/
 }
