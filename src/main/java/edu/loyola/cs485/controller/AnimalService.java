@@ -2,8 +2,6 @@ package edu.loyola.cs485.controller;
 
 import edu.loyola.cs485.model.entity.Animal;
 import edu.loyola.cs485.model.dao.AnimalDAO;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
@@ -14,7 +12,7 @@ import java.text.SimpleDateFormat;
 public class AnimalService {
 
     public Animal createAnimal(String name, String breed, String color, String species, String dob) throws Exception {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date tempDob = new java.sql.Date(sdf.parse(dob).getTime());
 
         Animal animal = new Animal();
@@ -32,7 +30,7 @@ public class AnimalService {
     }
 
     public Animal updateAnimal(int id, String name, String breed, String color, String species, String dob) throws Exception {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date newDob = new java.sql.Date(sdf.parse(dob).getTime());
 
         // fetch existing Animal object with updated information
@@ -48,6 +46,8 @@ public class AnimalService {
         animal.setColor(color);
         animal.setSpecies(species);
 
+        // Call DAO to update the record in the database
+        //AnimalDAO dao = new AnimalDAO();
         dao.update(animal);
 
         return animal;
