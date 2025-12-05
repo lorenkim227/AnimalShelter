@@ -35,17 +35,19 @@ public class AnimalService {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         java.sql.Date newDob = new java.sql.Date(sdf.parse(dob).getTime());
 
-        // Create Animal object with updated information
-        Animal animal = new Animal();
-        animal.setId(id);
+        // fetch existing Animal object with updated information
+        AnimalDAO dao = new AnimalDAO();
+        Animal animal = dao.read(id);
+
+        if (animal == null) {
+            throw new Exception("Animal with id " + id + " does not exist");
+        }
         animal.setName(name);
         animal.setBreed(breed);
         animal.setDob(newDob);
         animal.setColor(color);
         animal.setSpecies(species);
 
-        // Call DAO to update the record in the database
-        AnimalDAO dao = new AnimalDAO();
         dao.update(animal);
 
         return animal;

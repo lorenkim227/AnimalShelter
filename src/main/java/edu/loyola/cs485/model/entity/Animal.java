@@ -17,7 +17,7 @@ import java.sql.Date;
 
 * */
 public class Animal extends AbstractEntity {
-    private Integer id_animal = null;
+    private Integer id_animal;
     private Integer id_adoption = null;
     private String name_animal;
     private String breed_animal;

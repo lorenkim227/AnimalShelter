@@ -111,11 +111,16 @@ public class AnimalCrudDialog extends JDialog {
             AnimalService service = new AnimalService();
             Animal c = (Animal) lstAnimalUI.getSelectedValue();
             if (c != null) {
-                AnimalInfoDialog dialog = new AnimalInfoDialog();
+                AnimalUpdateDialog dialog = new AnimalUpdateDialog();
+                dialog.pack();
+                dialog.setVisible(true);
+                populateUI();
+            }
+            else {
+                AnimalUpdateDialog dialog = new AnimalUpdateDialog();
                 dialog.pack();
                 dialog.setVisible(true);
 
-                service.updateAnimal(c.getId(), c.getName(), c.getBreed(), c.getSpecies(), c.getColor(), c.getDob().toString());
                 populateUI();
             }
 

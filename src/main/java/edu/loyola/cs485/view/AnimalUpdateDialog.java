@@ -4,7 +4,9 @@ import edu.loyola.cs485.controller.AnimalService;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class AnimalInfoDialog extends JDialog {
+public class AnimalUpdateDialog extends JDialog {
+
+    private int id;
 
     private JPanel contentPane;
     private JButton buttonOK;
@@ -16,7 +18,8 @@ public class AnimalInfoDialog extends JDialog {
     private JTextField txtColor;
     private JTextField txtSpecies;
 
-    public AnimalInfoDialog() {
+    public AnimalUpdateDialog() {
+        this.id = id;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonCancel);
@@ -52,14 +55,14 @@ public class AnimalInfoDialog extends JDialog {
     private void onOK() {
         // add your code here
         AnimalService service = new AnimalService();
-        String id = txtId.getText();
+        //String id = txtId.getText();
         String name = txtName.getText();
         String breed = txtBreed.getText();
         String dob = txtDob.getText();
         String color = txtColor.getText();
         String species = txtSpecies.getText();
         try {
-            service.createAnimal(name, breed, species, color, dob);
+            service.updateAnimal(id, name, breed, species, color, dob);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -72,7 +75,7 @@ public class AnimalInfoDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        AnimalInfoDialog dialog = new AnimalInfoDialog();
+        AnimalUpdateDialog dialog = new AnimalUpdateDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
